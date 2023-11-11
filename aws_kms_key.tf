@@ -7,7 +7,7 @@ resource "aws_kms_key" "k" {
       k => v if v["create"] == true
   }
 
-  description                        = each.value["description"]
+  description                        = format("KMS Key - %s", each.key)
   key_usage                          = each.value["key_usage"]
   custom_key_store_id                = each.value["custom_key_store_id"]
   customer_master_key_spec           = each.value["customer_master_key_spec"]
