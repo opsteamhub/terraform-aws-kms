@@ -3,5 +3,5 @@ output "kms_key" {
 }
 
 output "kms_replica_key" {
-  value = try(aws_kms_replica_key.k_replica, null)
+  value = aws_kms_replica_key.k_replica
 }
