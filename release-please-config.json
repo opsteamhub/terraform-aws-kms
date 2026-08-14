@@ -1,0 +1,14 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/v17.11.1/schemas/config.json",
+  "bootstrap-sha": "7f556c7e35f919ce16dd7c84984f24d0c712b287",
+  "draft-pull-request": false,
+  "include-component-in-tag": false,
+  "include-v-in-tag": true,
+  "pull-request-title-pattern": "chore(release): release ${version}",
+  "release-type": "terraform-module",
+  "packages": {
+    ".": {
+      "component": "terraform-aws-kms"
+    }
+  }
+}
