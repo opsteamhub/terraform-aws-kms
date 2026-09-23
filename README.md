@@ -4,7 +4,7 @@ Módulo Terraform para criar chaves KMS, aliases, grants, policies customizadas 
 
 ## Compatibilidade
 
-- Terraform `>= 1.7, < 2.0`
+- Terraform `>= 1.9, < 2.0`
 - AWS provider `>= 6.0, < 7.0`
 
 ## Uso básico
