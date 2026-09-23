@@ -1,5 +1,9 @@
 mock_provider "aws" {}
 
+mock_provider "aws" {
+  alias = "dr"
+}
+
 run "secure_primary_key" {
   command = plan
 
@@ -93,4 +97,31 @@ run "rejects_replica_without_region" {
   }
 
   expect_failures = [var.kms_config]
+}
+
+run "plans_replica_with_region_without_credentials" {
+  command = plan
+
+  variables {
+    disaster_recovery_region = "us-west-2"
+    kms_config = {
+      replicated = {
+        tags = {
+          Environment = "test"
+          Project     = "terraform-modules"
+          Owner       = "platform"
+        }
+        replica = {}
+      }
+    }
+  }
+
+  assert {
+    condition = (
+      length(aws_kms_replica_key.k_replica) == 1 &&
+      length(aws_kms_alias.k_replica_alias) == 1 &&
+      aws_kms_replica_key.k_replica["replicated"].tags["Owner"] == "platform"
+    )
+    error_message = "The DR provider must plan a replica and alias without AWS credentials."
+  }
 }

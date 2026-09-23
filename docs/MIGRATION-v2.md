@@ -1,7 +1,7 @@
 # Migração para v2
 
 1. Fixe o consumidor na revisão atual antes do upgrade; historicamente o repositório não possuía releases.
-2. Atualize Terraform para 1.7+ e AWS provider para 6.x.
+2. Atualize Terraform para 1.9+ e AWS provider para 6.x.
 3. Adicione `Environment`, `Project` e `Owner` em cada `kms_config[*].tags`.
 4. Revise plans de grants: o bug anterior repetia o primeiro item e ignorava mudanças. A v2 corrige os índices e passa a reconciliar alterações.
 5. Para réplicas, informe `disaster_recovery_region`, mantenha `multi_region = true` e revise a policy específica da réplica.
